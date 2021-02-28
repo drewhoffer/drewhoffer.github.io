@@ -4,6 +4,9 @@ const ehbs = require('express-handlebars');
 const path = require('path');
 const fs = require('fs');
 
+
+
+const port = process.env.PORT || 3000;
 // handlebars setup
 const ext = "hbs"; // so we don't have to use .handlebars
 const hbs = ehbs.create({
@@ -23,6 +26,6 @@ app.get('/', (req, res) => {
     res.render('index', {});
 });
 
-app.listen(3000, () => {
-    console.log('server started ons port 3000');
+app.listen(port, () => {
+    console.log(`server started ons port ${port}`);
 });
