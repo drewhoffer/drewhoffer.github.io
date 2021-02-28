@@ -1,0 +1,316 @@
+// styles for the entire header component
+.header{
+    height: 12rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+
+    // container for all text and button content of header
+    .header-content {
+        @include flex-layout($justification: space-between);
+        height: 100%;
+        margin: 0 5rem;
+        width: 100%;
+
+        // container for content at left side of header (bymaryalice heading)
+        .header-content-left {
+            h2 {
+                font-size: $font-size__lg + 1rem;
+            }
+        }
+
+        // container for content at right side of header (go to store button)
+        .header-content-right {
+            .header-button {
+                @include landing-button(lighten($color__black, 10%), $color__white);
+                border-radius: 1rem;
+                box-shadow: none;
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 3rem;
+                font-weight: 300;
+                height: 4rem;
+                padding:  1rem 2rem;
+                margin-right: 20rem;
+                transition: background-color .3s ease;
+
+                @include media(md) {
+                    font-size: 3rem;
+                }
+
+                @include media(mobile-xl) {
+                    font-size: 3.5rem;
+                    margin-right: 25rem;
+                }
+
+                @media (max-width: 720px) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+// styles for the hamburger menu component/button
+.hamburger-menu {
+    height: 2.5rem;
+    position: absolute;
+    right: 5rem;
+    top: 5rem;
+    width: 3rem;
+    z-index: 5000;
+
+    @include media(md) {
+        height: 4rem;
+        top: 4.5rem;
+        width: 5rem;
+    }
+
+    // container for the visible lines of the menu
+    .menu-lines {
+        @include flex-layout($direction: column, $justification: space-between, $alignment: flex-end);
+        cursor: pointer;
+        height: 100%;
+        width: 100%;
+        
+        // common class for all 3 lines
+        .menu-line {
+            background-color: $color__black;
+            height: 0.2rem;
+            transition: width 0.3s;
+        }
+
+        // styles for first and last line
+        .menu-line-1, .menu-line-3{
+            width: 75%;
+        }
+
+        // styles for middle line
+        .menu-line-2 {
+            width: 90%;
+        }
+    }
+}
+
+// this makes the lines fill the full width when the menu is open
+#nav-checkbox:checked ~ .hamburger-menu .menu-lines .menu-line {
+    width: 100%;
+}
+
+
+
+
+// styles for the opened navigation menu (when hamburger menu is selected/checked/open)
+.nav-menu {
+    @include flex-layout($alignment: flex-start);
+
+    background-color: $color__grey;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(100%);
+    width: 15rem;
+    z-index: 1000;
+    transition: transform 0.7s ease;
+
+    @include media(mobile-xl) {
+        width: 40rem;
+    }
+
+    // list container containing navigation links inside menu
+    .nav-list {
+        @include flex-layout($direction: column);
+        margin-top: 12rem;
+
+        .nav-list__item {
+            padding: 3rem 0;
+
+            @include media(mobile-xl) {
+                padding: 5rem 0;
+            }
+
+            .nav-list__link {
+                color: $color__white;
+                font-family: 'Roboto', sans-serif;
+                font-size: $font-size__md;
+                font-weight: 300;
+                text-decoration: none;
+
+                @include media(mobile-xl) {
+                    font-size: $font-size__lg;
+                }
+            }
+        }
+    }
+}
+
+// this opens the menu from the right when hamburger menu is clicked
+#nav-checkbox:checked ~ .nav-menu {
+    transform: translateX(0);
+}
+
+
+
+
+// styles for the button inside of the landing-main content
+.landing-main__button {
+    @include landing-button($color__landing-main);
+
+    @include media(mobile-xl) {
+        font-size: $font-size__lg;
+        padding: 4rem 3rem;
+    }
+}
+
+
+
+
+// styles for the button inside of the landing-gallery content
+.landing-gallery__button {
+    @include landing-button(darken($color__landing-gallery, 35%));
+
+    @include media(mobile-xl) {
+        font-size: $font-size__lg;
+        padding: 4rem 3rem;
+    }
+}
+
+
+
+
+// styles for the grid of links/buttons to various art in the gallery section 
+.gallery-art-grid {
+    column-gap: 1.5rem;
+    display: grid;
+    grid-template-rows: 20rem 20rem;
+    grid-template-columns: 30rem 30rem;
+    row-gap: 1.5rem;
+    margin: 5rem;
+    position: relative;
+
+    @media (max-width: 1750px) {
+        // no mixin for this one since it's a one-off size
+        grid-template-columns: 28rem 28rem;
+    }
+
+    @include media(xl) {
+        grid-template-rows: 16rem 16rem;
+        grid-template-columns: 25rem 25rem;
+    }
+
+    @include media(lg) {
+        grid-template-rows: 14rem 14rem;
+        grid-template-columns: 20rem 20rem;
+    }
+
+    @include media(xs) {
+        grid-template-columns: 17rem 17rem;
+    }
+
+    @include media(mobile-xl) {
+        grid-template-columns: 25rem 25rem;
+        grid-template-rows: 15rem 15rem;
+    }
+
+    // styles for coming soon mask over gallery art grid
+    .gallery-art-grid__mask {
+        @include flex-layout();
+        background-color: transparentize($color: white, $amount: 0.3);
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+
+        .gallery-art-grid__mask-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: $font-size__lg + 3rem;
+        }
+    }
+
+    // common styles for every grid item
+    .gallery-art-grid__item {
+        @include flex-layout;
+        background-size: cover;
+        color: $color__black;
+
+        text-decoration: none;
+    }
+
+    // styles for top left link in grid
+    .gallery-art-grid__item--1 {
+        background-image: linear-gradient(to right, transparentize($color__grey, 0.5), transparentize($color__white, 0.8)), url(/img/watercolour-image.jpeg);
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+    }
+
+    // styles for top right link in grid
+    .gallery-art-grid__item--2 {
+        background-image: linear-gradient(to right, transparentize($color__grey, 0.5), transparentize($color__white, 0.8)), url(/img/silk-image.jpeg);
+        grid-column: 2 / span 1;
+        grid-row: 1 / span 1;
+    }
+
+    // styles for bottom left link in grid
+    .gallery-art-grid__item--3 {
+        background-image: linear-gradient(to right, transparentize($color__grey, 0.5), transparentize($color__white, 0.8)), url(/img/ink-image.jpeg);
+        grid-column: 1 / span 1;
+        grid-row: 2 / span 1;
+    }
+
+    // styles for bottom right link in grid
+    .gallery-art-grid__item--4 {
+        background-image: linear-gradient(to right, transparentize($color__grey, 0.5), transparentize($color__white, 0.8)), url(/img/misc-image.png);
+        grid-column: 2 / span 1;
+        grid-row: 2 / span 1;
+    }
+}
+
+
+
+
+// container for page controls (currently just the radio buttons)
+.page-controls-container {
+    @include flex-layout($justification: flex-end);
+    height: 100vh;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    max-width: 150rem;
+
+    // container for the 3 radio button navs on right
+    .radio-nav-container {
+    @include flex-layout($direction: column);
+        position: relative;
+        width: 15rem;
+
+        // styles for the individual buttons
+        .radio-nav {
+            background-color: $color__radio-light-default;
+            border-radius: 50%;
+            cursor: pointer;
+            height: 3rem;
+            margin: 1rem;
+            transition: background-color 0.7s;
+            width: 3rem;
+            z-index: 100;
+
+            @include media(mobile-xl) {
+                height: 7rem;
+                margin: 2rem;
+                width: 7rem;
+            }
+        }
+    }
+}

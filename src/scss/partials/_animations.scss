@@ -1,0 +1,265 @@
+// Animations for Main section **********************************************************************
+// styles for toggling gallery and about when main selected
+#page-toggler-main:checked ~ .landing-main {
+    // this fades in the page when selected
+    opacity: 1;
+}
+#page-toggler-main:checked ~ .landing-gallery,
+#page-toggler-main:checked ~ .landing-about {
+    // this causes the fade-out effect on the entire page
+    opacity: 0;
+    z-index: -1;
+}
+#page-toggler-main:checked ~ .landing-main .landing-main__content .landing-main__info {
+    // this animates the text content side of the page for the fade-in slide effect
+    h1 {
+        opacity: 0;
+        animation: slide-from-left 0.7s both;
+    }
+
+    p {
+        opacity: 0;
+        animation-name: slide-from-left;
+        animation-duration: 0.7s;
+        animation-delay: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    a {
+        opacity: 0;
+        animation-name: fade-in;
+        animation-duration: 0.7s;
+        animation-delay: 0.3s;
+        animation-fill-mode: both;
+    }
+}
+#page-toggler-main:checked ~ .landing-main .landing-main__content .landing-main__image {
+    // this animates the image side of the page
+    img {
+        opacity: 0;
+        animation-name: slide-from-right;
+        animation-duration: 0.5s;
+        animation-delay: 0.5s;
+        animation-fill-mode: both;
+    }
+
+    .decoration-container {
+        opacity: 0;
+        animation-name: fade-in;
+        animation-duration: 0.7s;
+        animation-delay: 0.6s;
+        animation-fill-mode: both;
+    }
+}
+#page-toggler-main:checked ~ .page-controls-container .radio-nav--main {
+    // adjusts colors of radio button for current page
+    background-color: $color__radio-light-active;
+}
+#page-toggler-main:checked ~ .landing-main .landing-main__bg {
+    // this animates the coloured background panel on page change
+    animation: slide-from-right-large 0.5s;
+}
+#page-toggler-main:checked ~ .header .header-content .header-content-right .header-button {
+    // this animates the colour of the "go to store" button on page change
+    background-color: darken($color__landing-main, 15%);
+
+    &:hover {
+        background-color: darken($color__landing-main, 20%);
+    }
+}
+// End of Animations for Main section **********************************************************************
+
+
+
+
+// Animations for Gallery section **********************************************************************
+// styles for toggling main and about when gallery selected
+#page-toggler-gallery:checked ~ .landing-gallery {
+    // this fades in the page when selected
+    opacity: 1;
+}
+#page-toggler-gallery:checked ~ .landing-main,
+#page-toggler-gallery:checked ~ .landing-about {
+    // this causes the fade-out effect on the entire page
+    opacity: 0;
+    z-index: -1;
+}
+#page-toggler-gallery:checked ~ .landing-gallery .landing-gallery__content .landing-gallery__info {
+    // this animates the text content side of the page for the fade-in slide effect
+    h3 {
+        opacity: 0;
+        animation: slide-from-right 0.7s both;
+    }
+
+    p {
+        opacity: 0;
+        animation-name: slide-from-right;
+        animation-duration: 0.7s;
+        animation-delay: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    a {
+        opacity: 0;
+        animation-name: fade-in;
+        animation-duration: 0.7s;
+        animation-delay: 0.3s;
+        animation-fill-mode: both;
+    }
+    
+    .gallery-art-grid {
+        opacity: 0;
+        animation-name: slide-from-right;
+        animation-duration: 0.7s;
+        animation-delay: 0.4s;
+        animation-fill-mode: both;
+    }
+}
+#page-toggler-gallery:checked ~ .landing-gallery .landing-gallery__content .landing-gallery__image {
+    // this animates the image side of the page
+    img {
+        opacity: 0;
+        animation-name: slide-from-left;
+        animation-duration: 0.5s;
+        animation-delay: 0.5s;
+        animation-fill-mode: both;
+    }
+
+    .decoration-container {
+        opacity: 0;
+        animation-name: fade-in;
+        animation-duration: 0.7s;
+        animation-delay: 0.6s;
+        animation-fill-mode: both;
+    }
+}
+#page-toggler-gallery:checked ~ .page-controls-container .radio-nav {
+    // adjusts colors of radio button for current page
+    background-color: $color__radio-dark-default;
+
+    @include media(mobile-xl) {
+        // radio buttons all same colour on mobile since page orientation is the same (colour on right)
+        background-color: $color__radio-light-default;
+    }
+}
+#page-toggler-gallery:checked ~ .page-controls-container .radio-nav--gallery {
+    // adjusts colors of radio button for current page
+    background-color: $color__radio-dark-active;
+
+    @include media(mobile-xl) {
+        // radio buttons all same colour on mobile since page orientation is the same (colour on right)
+        background-color: $color__radio-light-active;
+    }
+}
+#page-toggler-gallery:checked ~ .landing-gallery .landing-gallery__bg {
+    // this animates the coloured background panel on page change
+    animation: slide-from-left-large 0.5s;
+
+    @include media(mobile-xl) {
+        // background always same orientation for mobile
+        animation: slide-from-right-large 0.5s;
+    }
+}
+#page-toggler-gallery:checked ~ .header .header-content .header-content-right .header-button {
+    // this animates the colour of the "go to store" button on page change
+    background-color: darken($color__landing-gallery, 40%);
+
+    &:hover {
+        background-color: darken($color__landing-gallery, 45%);
+    }
+}
+// End of Animations for Gallery section **********************************************************************
+
+
+
+
+// Animations for About section **********************************************************************
+// styles for toggling main and gallery when about selected
+#page-toggler-about:checked ~ .landing-about {
+    // this fades in the page when selected
+    opacity: 1;
+}
+#page-toggler-about:checked ~ .landing-main,
+#page-toggler-about:checked ~ .landing-gallery {
+    // this causes the fade-out effect on the entire page
+    opacity: 0;
+    z-index: -1;
+}
+#page-toggler-about:checked ~ .landing-about .landing-about__content .landing-about__info {
+    h3 {
+        opacity: 0;
+        animation: slide-from-left 0.7s both;
+    }
+
+    p {
+        opacity: 0;
+        animation-name: slide-from-left;
+        animation-duration: 0.7s;
+        animation-delay: 0.3s;
+        animation-fill-mode: both;
+    }
+}
+#page-toggler-about:checked ~ .landing-about .landing-about__content .landing-about__image {
+    // this animates the image side of the page
+    img {
+        opacity: 0;
+        animation-name: slide-from-right;
+        animation-duration: 0.5s;
+        animation-delay: 0.5s;
+        animation-fill-mode: both;
+    }
+
+    .decoration-container {
+        opacity: 0;
+        animation-name: fade-in;
+        animation-duration: 0.7s;
+        animation-delay: 0.6s;
+        animation-fill-mode: both;
+    }
+}
+#page-toggler-about:checked ~ .page-controls-container .radio-nav--about {
+    // adjusts colors of radio button for current page
+    background-color: $color__radio-light-active;
+}
+#page-toggler-about:checked ~ .landing-about .landing-about__bg {
+    // this animates the coloured background panel on page change
+    animation: slide-from-right-large 0.5s;
+}
+#page-toggler-about:checked ~ .header .header-content .header-content-right .header-button {
+    // this animates the colour of the "go to store" button on page change
+    background-color: darken($color__landing-about, 30%);
+
+    &:hover {
+        background-color: darken($color__landing-about, 35%);
+    }
+}
+// End of Animations for About section **********************************************************************
+
+
+
+
+// KEYFRAMES used for above animations
+@keyframes slide-from-left {
+    0% {transform: translateX(-80px); opacity: 0;}
+    100% {transform: translateX(0); opacity: 1;}
+}
+
+@keyframes slide-from-left-large {
+    0% {transform: translateX(-240px); opacity: 0;}
+    100% {transform: translateX(0); opacity: 1;}
+}
+
+@keyframes slide-from-right {
+    0% {transform: translateX(80px); opacity: 0;}
+    100% {transform: translateX(0); opacity: 1;}
+}
+
+@keyframes slide-from-right-large {
+    0% {transform: translateX(240px); opacity: 0;}
+    100% {transform: translateX(0); opacity: 1;}
+}
+
+@keyframes fade-in {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}

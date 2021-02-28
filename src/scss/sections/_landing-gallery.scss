@@ -1,0 +1,82 @@
+
+// Styles for the second section of the landing page; contains gallery heading and a small 2x2 image gallery linking to the store
+.landing-gallery {
+    opacity: 0;
+    transition: opacity 0.7s;
+
+    // container for the background colours
+    .landing-gallery__bg {
+        @include color-panel-background($small-panel-color: $color__landing-gallery, $flip: true);
+    }
+
+    // container for all of the page content (text, images, etc)
+    .landing-gallery__content {
+        @include flex-layout($justification: space-between, $direction: row-reverse);
+
+        height: 100%;
+        // margin for header to fit in
+        margin-top: $header-space;
+        width: 100%;
+
+        @include media(mobile-xl) {
+            flex-direction: column;
+            height: 88%;
+            justify-content: center;
+        }
+
+        // container for content like text and buttons/links
+        .landing-gallery__info {
+            @include flex-layout($justification: space-evenly, $direction: column);
+            height: $landing-content-height;
+            position: relative;
+            text-align: center;
+            width: $landing-content-width;
+
+            @include media(md) {
+                width: 40rem;
+            }
+
+            @include media(sm) {
+                width: 30rem;
+            }
+
+            @include media(mobile-xl) {
+                width: 45rem;
+                text-align: center;
+            }
+
+            p {
+                margin-top: 5rem;
+            }
+        }
+
+        // container for the side containing media (image, fluff/decorations)
+        .landing-gallery__image {
+            img {
+                @include landing-page-image;
+                @include basic-shadow($flip: true);
+
+                @include media(mobile-xl) {
+                    // no gallery image on mobile
+                    display: none;
+                }
+            }
+
+            // container for fluff decoration rectangle thing
+            .decoration-container {
+                height: 15rem;
+                width: 100%;
+
+                .color-blocks-decoration {
+                    @include color-blocks-decoration(transparentize(darken($color__landing-gallery, 30%), 0.3), lighten($color__landing-gallery, 25%));
+                }
+
+                
+                @include media(mobile-xl) {
+                    height: 0;
+                    display: none;
+                }
+            }
+        }
+    }
+} 

@@ -1,0 +1,269 @@
+//Mixins
+
+// mixin for reusable media queries with various breakpoints
+@mixin media($breakpoint) {
+    @if($breakpoint == xxl) {
+        @media (max-width: 1700px) {
+            @content;
+        }
+    }
+
+    @if($breakpoint == xl) {
+        @media (max-width: 1600px) {
+            @content;
+        }
+    }
+
+    @if($breakpoint == lg) {
+        @media (max-width: 1400px) {
+            @content;
+        }
+    }
+
+    @if($breakpoint == md) {
+        @media (max-width: 1200px) {
+            @content;
+        }
+    }
+
+    @if($breakpoint == sm) {
+        @media (max-width: 1050px) {
+            @content;
+        }
+    }
+
+    @if($breakpoint == xs) {
+        @media (max-width: 900px) {
+            @content;
+        }
+    }
+
+    @if($breakpoint == mobile-xl) {
+        @media (max-width: 768px) {
+            @content;
+        }
+    }
+
+    @if($breakpoint == mobile-lg) {
+        @media (max-width: 700px) {
+            @content;
+        }
+    }
+
+    
+    @if($breakpoint == mobile-md) {
+        @media (max-width: 600px) {
+            @content;
+        }
+    }
+
+    @if($breakpoint == mobile-sm) {
+        @media (max-width: 500px) {
+            @content;
+        }
+    }
+
+    @if($breakpoint == mobile-xs) {
+        @media (max-width: 400px) {
+            @content;
+        }
+    }
+}
+
+
+
+
+// mixin for centering with flexbox or taking optional parameters
+@mixin flex-layout($justification: center, $alignment: center, $direction: row) {
+    display: flex;
+    align-items: $alignment;
+    flex-direction: $direction;
+    justify-content: $justification;
+}
+
+
+
+
+// general use subtle shadow style
+@mixin basic-shadow($flip: false) {
+    $length: 5px;
+    @if ($flip) {
+        $length: -5px
+    }
+
+    -webkit-box-shadow: $length 5px 5px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: $length 5px 5px 0px rgba(0,0,0,0.3);
+    box-shadow: $length 5px 5px 0px rgba(0,0,0,0.3);
+}
+
+
+
+
+// mixin for buttons used on landing page that allows custom colors
+@mixin landing-button($bg-color, $text-color: $color__white) {
+    @include basic-shadow;
+
+    background-color: $bg-color;
+    border: none;
+    border-radius: 0.3rem;
+    color: $text-color;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-size: $font-size__md;
+    font-weight: 400;
+    padding: 2rem 3rem;
+    text-decoration: none;
+    transition: background-color .2s;
+
+    &:hover {
+        background-color: lighten($bg-color, 10%);
+    }
+}
+
+
+
+
+// mixin for the white/color 2 panel background
+@mixin color-panel-background($small-panel-color, $large-panel-color: $color__white, $flip: false) {
+
+    // flip flex layout if flip is set
+    @if ($flip) {
+        @include flex-layout($direction: row-reverse);
+    } @else {
+        @include flex-layout;
+    }
+
+    // other properties
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: -100;
+
+    @include media(mobile-xl) {
+        // background always same orientation for mobile
+        flex-direction: row;
+    }
+    
+    .white-panel {
+        background-color: $large-panel-color;
+        flex: 6.2;
+        height: 100%;
+        width: 100%;
+
+        @include media(mobile-xl) {
+           flex: 1;
+        }
+    }
+    
+    .color-panel {
+        background-color: $small-panel-color;
+        flex: 3.8;
+        height: 100%;
+        width: 100%;
+
+        @include media(mobile-xl) {
+            flex: none;
+            width: 15rem;
+         }
+    }
+}
+
+
+
+
+// mixin for rectangular art image in each section
+@mixin landing-page-image {
+    height: 65rem;
+    object-fit: cover;
+    width: 45rem;
+
+    @include media(lg) {
+        width: 40rem;
+    }
+
+    @include media(md) {
+        width: 35rem;
+    }
+    
+    @include media(mobile-xl) {
+        height: 30rem;
+        width: 45rem;
+    }
+}
+
+
+
+
+// mixin for the fluff/rectangular overlapping decoration element on each page
+@mixin color-blocks-decoration($top-block-color, $bottom-block-color, $flip: false) {
+    position: absolute;
+    height: 5rem;
+    width: 70rem;
+    z-index: -100;
+
+    @include media(md) {
+        width: 50rem;
+    }
+
+    @include media(mobile-xl) {
+        // hide for now until i come up with better positioning on mobile
+        display: none;
+    }
+
+    .color-block-2 {
+        background-color: $bottom-block-color;
+        height: 100%;
+        left: -18%;
+        position: relative;
+        top: 50%;
+        width: 100%;
+        z-index: -2;
+
+        @include media(md) {
+            left: -10%;
+        }
+
+        @include media(mobile-xl) {
+            // reposition to be in the upper content
+            top: -1400%;
+            left: -80%;
+        }
+    }
+
+    .color-block-1 {
+        background-color: $top-block-color;
+        height: 100%;
+        left: -15%;
+        position: relative;
+        top: 90%;
+        width: 30%;
+        z-index: -1;
+        
+
+        @include media(md) {
+            @if ($flip == false) {
+                left: 0;
+            }
+        }
+
+        @include media(mobile-xl) {
+            top: -1360%;
+            left: -15%;
+        }
+
+        // logic for flipping horizontally
+        @if ($flip) {
+            left: 49%;
+        }
+    }
+}
+
+
+
+
+@mixin text-no-select {
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}

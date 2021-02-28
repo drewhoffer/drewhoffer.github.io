@@ -1,0 +1,104 @@
+<div class="landing">
+    <input type="radio" id="page-toggler-main" name="radio-group" hidden checked>
+    <input type="radio" id="page-toggler-gallery" name="radio-group" hidden>
+    <input type="radio" id="page-toggler-about" name="radio-group" hidden>
+
+    {{>_header}}
+    {{>_navigation-menu}}
+
+    <div class="page-controls-container">
+        <div class="radio-nav-container">
+            <label class="radio-nav radio-nav--main" for="page-toggler-main"></label>
+            <label class="radio-nav radio-nav--gallery" for="page-toggler-gallery"></label>
+            <label class="radio-nav radio-nav--about" for="page-toggler-about"></label>
+        </div>
+    </div>
+
+    <section class="landing-main landing-section">
+        <div class="landing-main__bg">
+            <div class="white-panel"></div>
+            <div class="color-panel"></div>
+        </div>
+
+        <div class="landing-main__content container">
+            <div class="landing-main__info">
+                <h1 unselectable="true"><span>byMaryAlice</span></h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus cupiditate blanditiis quo est enim.
+                    Veniam!
+                </p>
+                <a href="#" class="landing-main__button">Go To Gallery</a>
+            </div>
+            <div class="landing-main__image">
+                <img src="/img/landing-main__image.jpeg" alt="" draggable="false">
+                <div class="decoration-container">
+                    <div class="color-blocks-decoration">
+                        <div class="color-block-1"></div>
+                        <div class="color-block-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <section class="landing-gallery landing-section loading-hidden">
+
+        <div class="landing-gallery__bg">
+            <div class="white-panel"></div>
+            <div class="color-panel"></div>
+        </div>
+
+        <div class="landing-gallery__content container">
+            <div class="landing-gallery__info">
+                <h3><span>Gallery</span></h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat, labore!</p>
+                {{>_gallery-art-grid}}
+                {{!-- <a href="#" class="landing-gallery__button">See All</a> --}}
+            </div>
+            <div class="landing-gallery__image">
+                <img class="landing-gallery__image" src="/img/landing-gallery__image.jpg" alt="" draggable="false">
+                <div class="decoration-container">
+                    <div class="color-blocks-decoration">
+                        <div class="color-block-1"></div>
+                        <div class="color-block-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <section class="landing-about landing-section loading-hidden">
+
+        <div class="landing-about__bg">
+            <div class="white-panel"></div>
+            <div class="color-panel"></div>
+        </div>
+
+        <div class="landing-about__content container">
+            <div class="landing-about__info">
+                <h3><span>About Me</span></h3>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad rem doloremque ab? Ratione labore totam
+                    nesciunt autem, quas voluptatibus fugiat accusantium velit a accusamus similique ipsa non tempore
+                    voluptates animi nisi quod eum? Quidem, tempora dicta veniam exercitationem excepturi quibusdam?
+                </p>
+            </div>
+            <div class="landing-about__image">
+                <img class="landing-about__image" src="/img/landing-about__image.png" alt="" draggable="false">
+                <div class="decoration-container">
+                    <div class="color-blocks-decoration">
+                        <div class="color-block-1"></div>
+                        <div class="color-block-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>

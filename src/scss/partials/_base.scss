@@ -1,0 +1,135 @@
+// Base styles/global styles for project setup
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Roboto', sans-serif;
+    font-size: 62.5%;
+
+
+    // media queries for adjusting size of all elements
+    @include media(lg) {
+        font-size: 59%;
+    }
+
+    @include media(md) {
+        font-size: 55%;
+    }
+
+    @include media(sm) {
+        font-size: 50%;
+    }
+
+    @include media(xs) {
+        font-size: 45%;
+    }
+
+    @include media(mobile-xl) {
+        font-size: 55%;
+    }
+
+    @include media(mobile-lg) {
+        font-size: 50%;
+    }
+
+    @include media(mobile-md) {
+        font-size: 45%;
+    }
+
+    @include media(mobile-sm) {
+        font-size: 35%;
+    }
+
+    @include media(mobile-xs) {
+        font-size: 28%;
+    }
+}
+
+
+
+
+// Variables *************************************************************
+// General Sizes
+$landing-content-height: 80rem;
+$landing-content-width: 55rem;
+
+
+$header-padding: 5rem;
+$header-space: 5rem;
+
+// Font Sizes
+$font-size__huge: 10rem;
+$font-size__xl: 6.5rem;
+$font-size__lg: 4rem;
+$font-size__md: 2.5rem;
+$font-size__sm: 1.5rem;
+
+// Colors
+$color__landing-main: #54993D;
+$color__landing-gallery: #76C6DF;
+$color__landing-about: #E8C860;
+$color__black: #000;
+$color__white: #fff;
+$color__grey: #888;
+$color__radio-light-active: $color__white;
+$color__radio-light-default: transparentize($color__white, 0.7);
+$color__radio-dark-active: darken($color__white, 40%);;
+$color__radio-dark-default: transparentize(darken($color__white, 20%), 0.5);
+
+// End of Variables *************************************************************
+
+
+
+
+// Typography styles
+// Styles for main heading, byMaryAlice heading on landing-main
+h1 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: $font-size__huge;
+
+    span {
+        padding-top: 10rem;
+        border-bottom: 2px solid $color__black;
+    }
+}
+
+// Styles for other landing headings, Gallery and About Me headings
+h3 {
+    display: inline-block;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: $font-size__xl;
+    text-align: center;
+
+    span::after {
+        content: "";
+        display: block; 
+        margin: 0 auto; 
+        width: 60%; 
+        padding-top: 0.5rem; 
+        border-bottom: 1px solid black;
+    }
+}
+
+// Styles for paragraphs, like informational text blocks on each page'
+p {
+    font-family: 'Roboto', sans-serif;
+    font-size: $font-size__md;
+    font-weight: 300;
+
+    @include media(mobile-xl) {
+        font-size: $font-size__md + 1rem;
+    }
+}
+
+// Styles for "byMaryAlice" text at left side of header
+.header-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: $font-size__lg;
+}
+
+// Styles for heading image overlay, used on the image grid in gallery
+.image-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: $font-size__md;
+}

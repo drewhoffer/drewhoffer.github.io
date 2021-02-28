@@ -1,0 +1,36 @@
+// general use content container used for each page
+.container {
+    margin: 0 auto;
+    max-width: 120rem;
+
+    @include media(xxl) {
+        max-width: 110rem;
+    }
+
+    @include media(lg) {
+        max-width: 100rem;
+    }
+
+    @include media(md) {
+        max-width: 90rem;
+    }
+
+    @include media(sm) {
+        max-width: 80rem;
+    }
+
+    @include media(mobile-xl) {
+        // center content on left bg section since no content overlaps the coloured panel
+        margin: 0 auto 0 4%;
+        max-width: 70%;
+    }
+}
+
+
+
+
+// container for the content inside the header
+.header-container {
+    max-width: 130rem;
+    margin: 0 auto;
+}

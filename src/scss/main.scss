@@ -1,0 +1,15 @@
+// css reset styles first
+@import "./partials/reset";
+
+// other partials
+@import "./partials/mixins";
+@import "./partials/base";
+@import "./partials/components";
+@import "./partials/layout";
+@import "./partials/animations";
+
+// pages
+@import "./sections/landing-common";
+@import "./sections/landing-main";
+@import "./sections/landing-gallery";
+@import "./sections/landing-about";

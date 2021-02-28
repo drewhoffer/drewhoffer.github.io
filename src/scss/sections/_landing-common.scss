@@ -1,0 +1,13 @@
+// Common styles outside of 3 sections
+.landing {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    .landing-section {
+        height: 100%;
+        position: absolute;
+        width: 100%;
+    }
+}
